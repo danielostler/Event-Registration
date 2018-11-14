@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_wegu_er.EventUtil</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>EventUtil</name>
+        <script><![CDATA[var EventUtil = Class.create();
+EventUtil.prototype = {
+	initialize: function() {
+	},
+
+	/*_________________________________________________________________
+   * Description: Method used to check whether or not a user can view an event
+   * Parameters: N/A
+   * Returns: Boolean
+   ________________________________________________________________*/
+	canView: function() {
+
+		var status = current.getValue('status');
+
+		//If the event is published continue
+		if (status == 2) {
+			
+			//Restriction lists on the event record
+			var options = current.getElement('options');
+			var departments = current.getElement('departments');
+
+			//If there are no department or other possible restrictions
+			//and the event is published return true
+			if (options.nil() && departments.nil() && status == 2) {
+				return true;
+			}
+			//Evaluate retrictions
+			else {
+				
+				var user = gs.getUser();
+				
+				//Initialize some booleans to track each possible restriction
+				var optionCheck = this._optionCheck(options, user);
+
+				//To avoid unnecessary database operations, only check department restrictions if optionCheck is true
+				var departmentCheck = false;
+				if (optionCheck) {
+					departmentCheck = this._departmentCheck(departments, user);
+				}
+
+				//If both restriction check are true, return true, else return false
+				if (optionCheck && departmentCheck) {
+					return true;
+				}
+				else {
+					return false;
+				}
+			}
+		}
+		//If the event isn't published return false
+		else {
+			return false;
+		}
+
+	},
+
+
+	_optionCheck: function (options, user) {
+
+		//If the options list is empty return true
+		if (options.nil()) {
+			return true;
+		}
+		//Check if there is a manager restriction
+		else if (options.indexOf('Managers Only') > -1) {
+			
+			//If the current user is a manager return true
+			if (user.isMemberOf('Users with Is Manager Checked')) {				
+				return true;
+			}
+			
+			//If the current user isn't a manager return false
+			else {
+				return false;
+			}
+		}
+		//If there is no manager restriction return true
+		else {
+			return true;
+		}
+	},
+
+	_departmentCheck: function (departments, user) {
+
+		//If the department list is empty, return true
+		if (departments.nil()) {
+			return true;
+		}
+		//If not, see if the users department is in the list
+		else {
+			//Get the user GlideRecord object
+			var userGR = new GlideRecord('sys_user');
+			userGR.get(user.getID());
+
+			//See if the users department is in the list
+			if (departments.indexOf(userGR.getValue('department')) > -1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+	},
+
+	type: 'EventUtil'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>dan.ostler</sys_created_by>
+        <sys_created_on>2018-10-22 18:45:11</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>3d658ef94f1deb40218f28928110c7df</sys_id>
+        <sys_mod_count>22</sys_mod_count>
+        <sys_name>EventUtil</sys_name>
+        <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
+        <sys_update_name>sys_script_include_3d658ef94f1deb40218f28928110c7df</sys_update_name>
+        <sys_updated_by>dan.ostler</sys_updated_by>
+        <sys_updated_on>2018-10-22 19:43:46</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($rootScope,$scope, $timeout, $location, $http) {
+	/* widget controller */
+	var c = this;
+
+	//$scope.categorySelected = function(category) {
+		//$scope.active_category_id = category.sys_id;
+		//$timeout(function() {
+			//$location.search('category_id', category.sys_id);
+			//$location.search('id', c.options.page ||'ev_home');
+		//});
+	//}
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.badge {
+	background-color:rgb(0, 48, 87);
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>ev_categories</id>
+        <internal>false</internal>
+        <link/>
+        <name>Event Categories</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	/* populate the 'data' object */
+	/* e.g., data.table = $sp.getValue('table'); */
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>dan.ostler</sys_created_by>
+        <sys_created_on>2018-10-24 19:51:13</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>ce70bc664fdd2f40d347f7e18110c7ba</sys_id>
+        <sys_mod_count>155</sys_mod_count>
+        <sys_name>Event Categories</sys_name>
+        <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
+        <sys_update_name>sp_widget_ce70bc664fdd2f40d347f7e18110c7ba</sys_update_name>
+        <sys_updated_by>dan.ostler</sys_updated_by>
+        <sys_updated_on>2018-11-14 21:27:58</sys_updated_on>
+        <template><![CDATA[<div class="list-group">
+  <a class="list-group-item" ng-class="{'active': active_category_id == ''}" href="/sp?id=ev_home">Show All</a>
+  <div ng-repeat="category in c.data.categories track by category.sys_id">
+    <a href="#" class="list-group-item" ng-class="{'active': active_category_id == category.sys_id}" ng-click="categorySelected(category)">
+      {{::category.name}}
+      <span class="badge" ng-if="category.count">
+        {{category.count}}
+      </span>
+    </a>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

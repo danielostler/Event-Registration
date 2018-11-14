@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_script">
+    <sys_ui_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description/>
+        <global>false</global>
+        <name>x_wegu_er.vertilize</name>
+        <script><![CDATA[/*!
+ * vertilize 1.0.0
+ * Christopher Collins
+ * https://github.com/Sixthdim/vertilize.git
+ * License: MIT
+ */
+(function () {
+	"use strict";
+
+	var module = angular.module('angular.vertilize', []);
+
+	// Vertilize Container
+	module.directive('vertilizeContainer', [
+		function(){
+			return {
+				restrict: 'EA',
+				controller: [
+					'$scope', '$window',
+					function($scope, $window){
+						// Alias this
+						var _this = this;
+
+						// Array of children heights
+						_this.childrenHeights = [];
+
+						// API: Allocate child, return index for tracking.
+						_this.allocateMe = function(){
+							_this.childrenHeights.push(0);
+							return (_this.childrenHeights.length - 1);
+						};
+
+						// API: Update a child's height
+						_this.updateMyHeight = function(index, height){
+							_this.childrenHeights[index] = height;
+						};
+
+						// API: Get tallest height
+						_this.getTallestHeight = function(){
+							var height = 0;
+							for (var i=0; i < _this.childrenHeights.length; i=i+1){
+								height = Math.max(height, _this.childrenHeights[i]);
+							}
+							return height;
+						};
+
+						// Add window resize to digest cycle
+						angular.element($window).bind('resize', function(){
+							return $scope.$apply();
+						});            
+					}
+				]
+			};
+		}
+	]);
+
+	// Vertilize Item
+	module.directive('vertilize', [
+		function(){
+			return {
+				restrict: 'EA',
+				require: '^vertilizeContainer',
+				link: function(scope, element, attrs, parent){
+					// My index allocation
+					var myIndex = parent.allocateMe();
+
+					// Get my real height by cloning so my height is not affected.
+					var getMyRealHeight = function(){
+						var clone = element.clone()
+						.removeAttr('vertilize')
+						.css({
+							height: '',
+							width: element.width(),
+							position: 'fixed',
+							top: 0,
+							left: 0,
+							visibility: 'hidden'
+						});
+						element.after(clone);
+						var realHeight = clone.height();
+						clone['remove']();
+						return realHeight;
+					};
+
+					// Watch my height
+					scope.$watch(getMyRealHeight, function(myNewHeight){
+						if (myNewHeight){
+							parent.updateMyHeight(myIndex, myNewHeight);
+						}
+					});
+
+					// Watch for tallest height change
+					scope.$watch(parent.getTallestHeight, function(tallestHeight){
+						if (tallestHeight){
+							element.css('height', tallestHeight);
+						}
+					});
+				}
+			};
+		}
+	]);
+
+}());]]></script>
+        <script_name>vertilize</script_name>
+        <sys_class_name>sys_ui_script</sys_class_name>
+        <sys_created_by>dan.ostler</sys_created_by>
+        <sys_created_on>2018-11-12 19:36:16</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>f862e6204fb9e380d347f7e18110c7ac</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>x_wegu_er.vertilize</sys_name>
+        <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
+        <sys_update_name>sys_ui_script_f862e6204fb9e380d347f7e18110c7ac</sys_update_name>
+        <sys_updated_by>dan.ostler</sys_updated_by>
+        <sys_updated_on>2018-11-12 19:38:37</sys_updated_on>
+        <use_scoped_format>false</use_scoped_format>
+    </sys_ui_script>
+</record_update>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="status" table="x_wegu_er_instance" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Draft</label>
+            <language>en</language>
+            <name>x_wegu_er_instance</name>
+            <sequence>10</sequence>
+            <sys_created_by>dan.ostler</sys_created_by>
+            <sys_created_on>2018-10-18 18:47:48</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>ea42a9684f9de340d347f7e18110c703</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>dan.ostler</sys_updated_by>
+            <sys_updated_on>2018-10-18 18:48:31</sys_updated_on>
+            <value>1</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Published</label>
+            <language>en</language>
+            <name>x_wegu_er_instance</name>
+            <sequence>20</sequence>
+            <sys_created_by>dan.ostler</sys_created_by>
+            <sys_created_on>2018-10-18 18:47:52</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>32686dac4f9de340d347f7e18110c757</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>dan.ostler</sys_updated_by>
+            <sys_updated_on>2018-10-18 18:48:34</sys_updated_on>
+            <value>2</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Cancelled</label>
+            <language>en</language>
+            <name>x_wegu_er_instance</name>
+            <sequence>30</sequence>
+            <sys_created_by>dan.ostler</sys_created_by>
+            <sys_created_on>2018-10-18 18:47:57</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>3b68a9ac4f9de340d347f7e18110c77f</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>dan.ostler</sys_updated_by>
+            <sys_updated_on>2018-11-12 20:51:51</sys_updated_on>
+            <value>-2</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Past Event</label>
+            <language>en</language>
+            <name>x_wegu_er_instance</name>
+            <sequence>40</sequence>
+            <sys_created_by>dan.ostler</sys_created_by>
+            <sys_created_on>2018-10-18 18:48:06</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>fc7869ac4f9de340d347f7e18110c7e0</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>dan.ostler</sys_updated_by>
+            <sys_updated_on>2018-11-12 20:51:54</sys_updated_on>
+            <value>-1</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>status</element>
+            <name>x_wegu_er_instance</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>dan.ostler</sys_created_by>
+            <sys_created_on>2018-10-18 18:47:48</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>f66861ec4f9de340d347f7e18110c721</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>status</sys_name>
+            <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
+            <sys_update_name>sys_choice_x_wegu_er_instance_status</sys_update_name>
+            <sys_updated_by>dan.ostler</sys_updated_by>
+            <sys_updated_on>2018-10-18 18:47:48</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

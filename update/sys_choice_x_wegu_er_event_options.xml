@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="options" table="x_wegu_er_event" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>options</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Auto-approve Registration</label>
+            <language>en</language>
+            <name>x_wegu_er_event</name>
+            <sequence>10</sequence>
+            <sys_created_by>dan.ostler</sys_created_by>
+            <sys_created_on>2018-10-18 19:20:56</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>34ef6da84fdde340d347f7e18110c75a</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>dan.ostler</sys_updated_by>
+            <sys_updated_on>2018-10-18 19:24:55</sys_updated_on>
+            <value>Auto-approve Registration</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>options</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Public Participants List</label>
+            <language>en</language>
+            <name>x_wegu_er_event</name>
+            <sequence>20</sequence>
+            <sys_created_by>dan.ostler</sys_created_by>
+            <sys_created_on>2018-10-18 19:21:09</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>c0003da84fdde340d347f7e18110c749</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>dan.ostler</sys_updated_by>
+            <sys_updated_on>2018-10-18 19:25:00</sys_updated_on>
+            <value>Public Participants List</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>options</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Restrict Peer Relationships</label>
+            <language>en</language>
+            <name>x_wegu_er_event</name>
+            <sequence>30</sequence>
+            <sys_created_by>dan.ostler</sys_created_by>
+            <sys_created_on>2018-10-18 19:21:16</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>830031e84fdde340d347f7e18110c794</sys_id>
+            <sys_mod_count>4</sys_mod_count>
+            <sys_updated_by>dan.ostler</sys_updated_by>
+            <sys_updated_on>2018-10-18 19:25:05</sys_updated_on>
+            <value>Restrict Peer Relationships</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>options</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Managers Only</label>
+            <language>en</language>
+            <name>x_wegu_er_event</name>
+            <sequence>40</sequence>
+            <sys_created_by>dan.ostler</sys_created_by>
+            <sys_created_on>2018-10-18 19:23:16</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>c110bda84fdde340d347f7e18110c747</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>dan.ostler</sys_updated_by>
+            <sys_updated_on>2018-10-18 19:25:09</sys_updated_on>
+            <value>Managers Only</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>options</element>
+            <name>x_wegu_er_event</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>dan.ostler</sys_created_by>
+            <sys_created_on>2018-10-18 19:20:56</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>00003da84fdde340d347f7e18110c74b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>options</sys_name>
+            <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
+            <sys_update_name>sys_choice_x_wegu_er_event_options</sys_update_name>
+            <sys_updated_by>dan.ostler</sys_updated_by>
+            <sys_updated_on>2018-10-18 19:20:56</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

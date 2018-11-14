@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <before>false</before>
+        <description>Event Registration app migration</description>
+        <flush_cache>false</flush_cache>
+        <name>Create Events</name>
+        <run_once>false</run_once>
+        <script><![CDATA[(function () {
+
+	var gr = new GlideRecord('x_wegu_te_event');
+	gr.query();
+
+	while (gr.next()) {
+		var data = {};
+		data.name = gr.getValue('name');
+		data.description = gr.getValue('description');
+		data.category = gr.getElement('category').getDisplayValue();
+		data.instructor = gr.getElement('instructor').getDisplayValue();
+		data.location = gr.getElement('location').getDisplayValue();
+		data.start = gr.getValue('start');
+		data.end = gr.getValue('end');
+		data.owner = gr.getValue('owner');
+		data.capacity = gr.getValue('capacity');
+		data.options = [];
+		if (gr.getDisplayValue('auto_approve_registration')) {
+			data.options.push('Auto-approve Registration');
+		}
+		if (gr.getDisplayValue('public_participants_list')) {
+			data.options.push('Public Participants List');
+		}
+		if (gr.getDisplayValue('restrict_peer_relationships')) {
+			data.options.push('Restrict Peer Relationships');
+		}
+		
+		data.participants = [];
+		
+		var participant = new GlideRecord('x_wegu_te_participant');
+		participant.addQuery('training_event', gr.getUniqueValue());
+		participant.addQuery('registration_status', 'Registered').addOrCondition('registration_status', 'Wait List');
+		participant.query();
+		
+		while (participant.next()) {
+			var participantObj = {};
+			participantObj.user = participant.getValue('participant');
+			participantObj.status = participant.getValue('registration_status');
+			data.participants.push(participantObj);
+		}
+		
+		//Call the function to create the event record
+		createEvent(data);
+	}
+
+	function createEvent (data) {
+
+		var gr = new GlideRecord('x_wegu_er_instance');
+		gr.newRecord();
+		gr.setValue('name', data.name);
+		gr.setValue('description', data.description);
+		gr.setValue('owner', data.owner);
+		gr.setValue('start', data.start);
+		gr.setValue('end', data.end);
+		gr.setValue('capacity', data.capacity);
+		gr.setValue('options', data.options);
+
+		//Get the category record
+		var category = new GlideRecord('x_wegu_er_category');
+		category.addQuery('name', data.category);
+		category.query();
+
+		if (category.next()) {
+			gr.setValue('category', category.getUniqueValue());
+		}
+
+		//Get the instructor record
+		var instructor = new GlideRecord('x_wegu_er_instructor');
+		instructor.addQuery('name', data.instructor);
+		instructor.query();
+
+		if (instructor.next()) {
+			gr.setValue('instructor', instructor.getUniqueValue());
+		}
+
+		//Get the location record
+		var location = new GlideRecord('x_wegu_er_location');
+		location.addQuery('name', data.location);
+		location.query();
+
+		if (location.next()) {
+			gr.setValue('location', location.getUniqueValue());
+		}
+
+		gr.setValue('status', 2);
+		
+		//If the event has ended set the status to Past Event
+		var gdt = new GlideDateTime();
+		if (data.end != '' && data.end < gdt) {
+			gr.setValue('status', -1);
+		}
+		//Insert the event record
+		gr.insert();
+		
+		var users = [];
+		
+		//Create the Registration Records
+		for (var i = 0; i < data.participants.length; i++) {
+			var participant = data.participants[i];
+			users.push(participant.user);
+			
+			var registration = new GlideRecord('x_wegu_er_registration');
+			registration.newRecord();
+			registration.setValue('user', participant.user);
+			registration.setValue('registration_status', participant.status);
+			registration.setValue('event_instance', gr.getUniqueValue());
+			registration.insert();
+		}
+		gr.setWorkflow(false);
+		gr.autoSysFields(false);
+		gr.setValue('registered_users', users);
+		gr.update();
+		
+	}
+})();]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>dan.ostler</sys_created_by>
+        <sys_created_on>2018-11-12 14:50:01</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>b49c9d284fb56380d347f7e18110c766</sys_id>
+        <sys_mod_count>18</sys_mod_count>
+        <sys_name>Create Events</sys_name>
+        <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
+        <sys_update_name>sys_script_fix_b49c9d284fb56380d347f7e18110c766</sys_update_name>
+        <sys_updated_by>dan.ostler</sys_updated_by>
+        <sys_updated_on>2018-11-12 22:08:14</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+</record_update>

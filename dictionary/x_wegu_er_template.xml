@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element audit="true" extends="x_wegu_er_event" label="Event Template" max_length="40" name="x_wegu_er_template" type="collection"/>
+</database>
