@@ -1,23 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<database>
-    <element label="Registration" max_length="40" name="x_wegu_er_registration" type="collection">
-        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" choice="1" label="Attendance Status" max_length="40" name="attendance_status" read_only="true" type="choice">
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" label="Registration" max_length="40" name="x_wegu_er_registration" type="collection">
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" choice="1" label="Attendance Status" max_length="40" name="attendance_status" type="choice">
             <choice>
-                <element label="Attended" sequence="20" value="Attended"/>
-                <element label="Missing" sequence="30" value="Missing"/>
-                <element label="Pending" sequence="10" value="Pending"/>
+                <element inactive_on_update="false" label="Attended" sequence="20" value="Attended"/>
+                <element inactive_on_update="false" label="Missing" sequence="30" value="Missing"/>
+                <element inactive_on_update="false" label="Pending" sequence="10" value="Pending"/>
             </choice>
         </element>
-        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" label="Event" mandatory="true" max_length="32" name="event_instance" read_only="true" reference="x_wegu_er_instance" reference_cascade_rule="delete" type="reference"/>
-        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" choice="3" default="Pending Approval" label="Registration Status" max_length="40" name="registration_status" read_only="true" type="choice">
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" label="Event" max_length="32" name="event_instance" reference="x_wegu_er_instance" reference_cascade_rule="delete" reference_qual="active=true^status=2^EQ" reference_qual_condition="active=true^status=2^EQ" type="reference"/>
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" choice="3" default="Pending Approval" label="Registration Status" max_length="40" name="registration_status" type="choice">
             <choice>
-                <element label="Cancelled" sequence="40" value="Cancelled"/>
-                <element label="Pending Approval" sequence="10" value="Pending Approval"/>
-                <element label="Registered" sequence="20" value="Registered"/>
-                <element label="Wait List" sequence="30" value="Wait List"/>
+                <element inactive_on_update="false" label="Cancelled" sequence="40" value="Cancelled"/>
+                <element inactive_on_update="false" label="Pending Approval" sequence="10" value="Pending Approval"/>
+                <element inactive_on_update="false" label="Registered" sequence="20" value="Registered"/>
+                <element inactive_on_update="false" label="Wait List" sequence="30" value="Wait List"/>
             </choice>
         </element>
-        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" display="true" label="Participant" mandatory="true" max_length="32" name="user" reference="sys_user" reference_qual="u_user_type=Staff^active=true^EQ" reference_qual_condition="u_user_type=Staff^active=true^EQ" type="reference"/>
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" label="Participant" max_length="32" name="user" reference="sys_user" reference_qual="active=true^u_user_type=Staff^EQ" reference_qual_condition="active=true^u_user_type=Staff^EQ" type="reference"/>
         <index name="index">
             <element name="event_instance"/>
         </index>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_ng_template">
+    <sp_ng_template action="INSERT_OR_UPDATE">
+        <id>record-modal.html</id>
+        <sp_widget display_value="Event List">3bcb1a124fce6740d347f7e18110c727</sp_widget>
+        <sys_class_name>sp_ng_template</sys_class_name>
+        <sys_created_by>dan.ostler</sys_created_by>
+        <sys_created_on>2018-11-30 18:58:27</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>4ee643164f42a740d347f7e18110c730</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>record-modal.html</sys_name>
+        <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
+        <sys_update_name>sp_ng_template_4ee643164f42a740d347f7e18110c730</sys_update_name>
+        <sys_updated_by>dan.ostler</sys_updated_by>
+        <sys_updated_on>2018-12-06 17:02:17</sys_updated_on>
+        <template><![CDATA[<div class="modal-header">
+  <h4 class="modal-title">
+    <button type="button"
+            class="close"
+            ng-click="modalC.modalInstance.close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{:: modalC.record.name.display_value }}
+  </h4>
+</div>
+<div class="modal-body">
+  <dl class="dl-horizontal">
+    <div class="row">
+      <div ng-class="[
+                     {'col-md-12': modalC.record.thumbnail.display_value == ''},
+                     {'col-md-6': modalC.record.thumbnail.display_value != ''}
+                     ]">
+        <dt>Number:</dt>
+        <dd>{{:: modalC.record.number.display_value }}</dd>
+        <dt>Instructor:</dt>
+        <dd>{{:: modalC.record.instructor.display_value }}</dd>
+        <dt>Location:</dt>
+        <dd>{{:: modalC.record.location.display_value }}</dd>
+        <dt>Category:</dt>
+        <dd>{{:: modalC.record.category.display_value }}</dd>
+        <dt>Start:</dt>
+        <dd>{{:: modalC.record.start.display_value }}</dd>
+        <dt>End:</dt>
+        <dd>{{:: modalC.record.end.display_value }}</dd>
+        <dt>
+          <span class="glyphicon glyphicon-user user-icon"></span>
+        </dt>
+        <dd>
+          {{:: modalC.record.registered_user_count.display_value }}
+          <span ng-if="modalC.record.capacity">
+            /{{:: modalC.record.capacity.display_value }}
+          </span>
+        </dd>
+      </div>
+    </div>
+    <div class="row"
+         style="margin-top: 5px; padding-top: 5px; margin-right: 10px;">
+      <div class="col-md-12">
+        <dt>Description:</dt>
+        <dd ng-bind-html="modalC.record.description.display_value"></dd>
+      </div>
+    </div>
+    <div class="row"
+         style="margin-top: 5px; padding-top: 5px;"
+         ng-if="modalC.record.participants && modalC.record.registered_user_count.display_value > 0">
+      <div class="col-md-12">
+        <dt>Registered Participants:</dt>
+        <dd ng-repeat="user in modalC.record.participants">
+          {{:: user }}
+        </dd>
+      </div>
+    </div>
+  </dl>
+</div>
+<div class="modal-footer clearfix">
+  <div popover-trigger="mouseenter"
+       popover-placement="left"
+       popover-popup-close-delay="500"
+       uib-popover="{{ modalC.record.action_message }}"
+       style="display:inline-block;">
+    <button type="button"
+            class="btn btn-sm pull-right" 
+            ng-class="[{'btn-danger': modalC.record.action == 'cancel'},{'btn-primary': modalC.record.action == 'register'}]" 
+            ng-disabled="modalC.record.loading" 
+            ng-click="modalC.registrationAction()">
+      {{:: modalC.record.action_title }}
+      <span ng-show="modalC.record.loading">
+        <fa class="fa-spinner fa-spin fa-fw"></fa>
+      </span>
+    </button>
+  </div>
+</div>]]></template>
+    </sp_ng_template>
+</record_update>

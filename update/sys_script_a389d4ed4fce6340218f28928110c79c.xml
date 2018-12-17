@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_label/>
+        <action_name/>
+        <action_query>false</action_query>
+        <action_run_at>server</action_run_at>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <application/>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_wegu_er_registration</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition table="x_wegu_er_registration">registration_statusCHANGESTOCancelled^EQ<item endquery="false" field="registration_status" goto="false" newquery="false" operator="CHANGESTO" or="false" value="Cancelled"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Update Event on Cancelation</name>
+        <onclick/>
+        <order>100</order>
+        <priority>100</priority>
+        <read_access_action>false</read_access_action>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	//Get a GlideRecord object of the event
+	var event_instance = current.event_instance.getRefRecord();
+	event_instance.autoSysFields(false);
+
+	//Get a comma deliminated string of user record sys_ids for the wait list and registered users list
+	var registered_users = getUserList('Registered');
+	var wait_list = getUserList('Wait List');
+
+	//Update the event with the new user lists
+	event_instance.setValue('registered_users', registered_users);
+	event_instance.setValue('wait_list', wait_list);
+	event_instance.update();
+
+	//Queries the registration table for records related to the current event that are in a registration status of the argument
+	//Returns a string of comma deliminated user record sys_ids
+	function getUserList (status) {
+		var userList = [];
+		var gr = new GlideRecord('x_wegu_er_registration');
+		gr.addQuery('event_instance', event_instance.getUniqueValue());
+		gr.addQuery('registration_status', status);
+		gr.query();
+
+		while (gr.next()) {
+			userList.push(gr.getValue('user'));
+		}
+		return userList.toString();
+	}
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>dan.ostler</sys_created_by>
+        <sys_created_on>2018-11-27 22:26:10</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>a389d4ed4fce6340218f28928110c79c</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Update Event on Cancelation</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
+        <sys_update_name>sys_script_a389d4ed4fce6340218f28928110c79c</sys_update_name>
+        <sys_updated_by>dan.ostler</sys_updated_by>
+        <sys_updated_on>2018-11-27 22:41:12</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+</record_update>

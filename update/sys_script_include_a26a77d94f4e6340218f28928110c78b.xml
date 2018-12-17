@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_wegu_er.AjaxUtil</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>AjaxUtil</name>
+        <script><![CDATA[var AjaxUtil = Class.create();
+AjaxUtil.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	
+	/*_________________________________________________________________
+   * Description: Used by a client script to get data from a template when a template is selected.
+   * Parameters: N/A uses the getParameter method as it is used via GlideAjax.
+   * Returns: JSON stringified data object with field objects properties that contain a values and display_value property gathered from the selected template
+   ________________________________________________________________*/
+	applyTemplate: function() {
+
+		//Get the list of fields we will copy from the template and turn it into an array
+		var fields = gs.getProperty('x_wegu_er.template_fields').split(',');
+
+		//Get the template sys_id from the client and use that to get a GlideRecord object of the template
+		var templateID = this.getParameter('sysparm_template');
+		var template = new GlideRecord('x_wegu_er_template');
+		template.get(templateID);
+
+		//Intialize an object variable we will populate and send back to the client
+		var data = {};
+
+		for (var i = 0; i < fields.length; i++) {
+			//Create a string of the current field name
+			//This isn't necessary but I feel it makes the following code a little more readable
+			var fieldName = fields[i];
+
+			//Create an object property in the data object for each field 
+			data[fieldName] = {};
+			//Populate the new field object with a display value and a value
+			data[fieldName].display_value = template.getDisplayValue(fieldName);
+			data[fieldName].value = template.getValue(fieldName);
+		}
+
+		return JSON.stringify(data);
+
+	},
+
+	/*_________________________________________________________________
+   * Description: Used to get the capacity integer value from the selected location 
+   * Parameters: N/A
+   * Returns: Integer capacity value on the Location [x_wegu_er_location] record.
+   ________________________________________________________________*/
+	getCapacity: function () {
+		var locationID = this.getParameter('sysparm_location');
+		var location = new GlideRecord('x_wegu_er_location');
+		location.get(locationID);
+
+		return location.getValue('capacity');
+	},
+	type: 'AjaxUtil'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>dan.ostler</sys_created_by>
+        <sys_created_on>2018-11-27 20:08:54</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>a26a77d94f4e6340218f28928110c78b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AjaxUtil</sys_name>
+        <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
+        <sys_update_name>sys_script_include_a26a77d94f4e6340218f28928110c78b</sys_update_name>
+        <sys_updated_by>dan.ostler</sys_updated_by>
+        <sys_updated_on>2018-11-27 20:08:54</sys_updated_on>
+    </sys_script_include>
+</record_update>

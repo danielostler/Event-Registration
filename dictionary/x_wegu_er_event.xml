@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<database>
-    <element audit="true" label="Event" max_length="40" name="x_wegu_er_event" type="collection">
-        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" default="true" label="Active" max_length="40" name="active" read_only="true" type="boolean"/>
-        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" label="Capacity" max_length="40" name="capacity" type="integer"/>
-        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" choice="1" label="Category" max_length="32" name="category" reference="x_wegu_er_category" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference">
-            <choice/>
-        </element>
-        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" label="Departments" max_length="4000" name="departments" reference="cmn_department" reference_qual="u_active=true^EQ" reference_qual_condition="u_active=true^EQ" type="glide_list"/>
-        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" label="Description" max_length="8000" name="description" type="html"/>
-        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" label="Instructor" max_length="32" name="instructor" reference="x_wegu_er_instructor" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
-        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" label="Managers" max_length="4000" name="managers" reference="sys_user" reference_qual="roles=x_wegu_er.user^EQ" reference_qual_condition="roles=x_wegu_er.user^EQ" type="glide_list"/>
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Event" max_length="40" name="x_wegu_er_event" type="collection">
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element default="true" label="Auto-approve Registration" max_length="40" name="auto_approve_registration" type="boolean"/>
+        <element label="Capacity" max_length="40" name="capacity" type="integer"/>
+        <element dynamic_creation="true" dynamic_creation_script="current.name = value;&#13;&#10;current.insert();" label="Category" mandatory="true" max_length="32" name="category" reference="x_wegu_er_category" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element label="Departments" max_length="4000" name="departments" reference="cmn_department" reference_qual="u_active=true^EQ" reference_qual_condition="u_active=true^EQ" type="glide_list"/>
+        <element label="Description" max_length="8000" name="description" type="html"/>
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" dynamic_creation="true" dynamic_creation_script="current.name = value;&#13;&#10;current.insert();" label="Instructor" mandatory="true" max_length="32" name="instructor" reference="x_wegu_er_instructor" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" label="Managers" max_length="4000" name="managers" reference="sys_user" reference_qual="roles=x_wegu_er.power_user^ORroles=x_wegu_er.user^EQ" reference_qual_condition="roles=x_wegu_er.power_user^ORroles=x_wegu_er.user^EQ" type="glide_list"/>
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" label="Managers Only" max_length="40" name="managers_only" type="boolean"/>
         <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" display="true" label="Name" mandatory="true" max_length="100" name="name" type="string"/>
-        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" label="Options" max_length="4000" name="options" type="glide_list"/>
-        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" default="javascript:gs.getUserID,gs.getUser, gs.getUserDisplayName();" label="Owner" max_length="32" name="owner" reference="sys_user" reference_qual="roles=x_wegu_er.user^EQ" reference_qual_condition="roles=x_wegu_er.user^EQ" type="reference"/>
-        <element default="javascript:current.getTableName();" dynamic_default_value="b5cb83a85f220100a9ad2572f2b4773c" label="Class" max_length="80" name="sys_class_name" type="sys_class_name" use_dynamic_default="true"/>
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" default="javascript:gs.getUserID,gs.getUser, gs.getUserDisplayName();" label="Owner" max_length="32" name="owner" reference="sys_user" reference_qual="active=true^roles=x_wegu_er.power_user^ORroles=x_wegu_er.user^EQ" reference_qual_condition="active=true^roles=x_wegu_er.power_user^ORroles=x_wegu_er.user^EQ" type="reference"/>
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" label="Public Participant List" max_length="40" name="public_participant_list" type="boolean"/>
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" label="Restrict Peer Relationships" max_length="40" name="restrict_peer_relationships" type="boolean"/>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
         <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return '';  // return the calculated value&#13;&#10;&#13;&#10;})(current);" label="Thumbnail" max_length="40" name="thumbnail" type="user_image"/>
         <index name="index">
             <element name="owner"/>
@@ -23,6 +23,9 @@
         </index>
         <index name="index3">
             <element name="category"/>
+        </index>
+        <index name="index4">
+            <element name="sys_class_name"/>
         </index>
     </element>
 </database>

@@ -1,16 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record_update>
+<?xml version="1.0" encoding="UTF-8"?><record_update>
     <sys_dictionary action="INSERT_OR_UPDATE" element="capacity" table="x_wegu_er_location">
         <active>true</active>
         <array>false</array>
         <array_denormalized>false</array_denormalized>
         <attributes/>
         <audit>false</audit>
-        <calculation>(function calculatedFieldValue(current) {&#13;
-&#13;
-	// Add your code here&#13;
-	return '';  // return the calculated value&#13;
-&#13;
+        <calculation>(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
 })(current);</calculation>
         <choice/>
         <choice_field/>
@@ -53,9 +52,9 @@
         <staged>false</staged>
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>dan.ostler</sys_created_by>
-        <sys_created_on>2018-10-18 16:40:49</sys_created_on>
+        <sys_created_on>2018-11-27 19:04:04</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>3a4b4d6c4fd9e340d347f7e18110c7ab</sys_id>
+        <sys_id>00bb67954f0e6340218f28928110c7e2</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Capacity</sys_name>
         <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
@@ -64,7 +63,7 @@
         <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
         <sys_update_name>sys_dictionary_x_wegu_er_location_capacity</sys_update_name>
         <sys_updated_by>dan.ostler</sys_updated_by>
-        <sys_updated_on>2018-10-18 16:40:49</sys_updated_on>
+        <sys_updated_on>2018-11-27 19:04:04</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <u_model_id/>

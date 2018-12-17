@@ -1,20 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record_update>
+<?xml version="1.0" encoding="UTF-8"?><record_update>
     <sys_ui_list parent="" relationship="" sys_domain="global" table="x_wegu_er_instructor" version="2" view="sys_ref_list">
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>name</element>
-            <list_id display_value="x_wegu_er_instructor" element="NULL" name="x_wegu_er_instructor" parent="NULL" relationship="NULL" sys_domain="global" view="72668e430a0a3c74000ad2c9f83ba47e">583be9604fdde340d347f7e18110c76a</list_id>
+            <list_id display_value="x_wegu_er_instructor" element="NULL" name="x_wegu_er_instructor" parent="NULL" relationship="NULL" sys_domain="global" view="72668e430a0a3c74000ad2c9f83ba47e">a4592e9f4f4aab40d347f7e18110c713</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
             <sum>false</sum>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-10-18 18:59:56</sys_created_on>
-            <sys_id>103be9604fdde340d347f7e18110c76b</sys_id>
+            <sys_created_on>2018-12-03 19:21:45</sys_created_on>
+            <sys_id>64592e9f4f4aab40d347f7e18110c714</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-10-18 18:59:56</sys_updated_on>
+            <sys_updated_on>2018-12-03 19:21:45</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
@@ -28,10 +27,10 @@
             <sum>false</sum>
             <sys_class_name>sys_ui_list</sys_class_name>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-10-18 18:59:56</sys_created_on>
+            <sys_created_on>2018-12-03 19:21:45</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
-            <sys_id>583be9604fdde340d347f7e18110c76a</sys_id>
+            <sys_id>a4592e9f4f4aab40d347f7e18110c713</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>x_wegu_er_instructor</sys_name>
             <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
@@ -40,7 +39,7 @@
             <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
             <sys_update_name>sys_ui_list_x_wegu_er_instructor_sys_ref_list</sys_update_name>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-10-18 18:59:56</sys_updated_on>
+            <sys_updated_on>2018-12-03 19:21:45</sys_updated_on>
             <sys_user/>
             <view display_value="Reference List" name="sys_ref_list">72668e430a0a3c74000ad2c9f83ba47e</view>
             <view_name/>

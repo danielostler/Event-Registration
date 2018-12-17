@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_wegu_er.Utility</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>Utility</name>
+        <script><![CDATA[var Utility = Class.create();
+Utility.prototype = {
+	initialize: function() {
+	},
+
+	canRegister: function (eventGR, userID) {
+		var user = new GlideRecord('sys_user');
+		user.get(gs.getUserID());
+
+		var managerCheck = function () {
+			return (eventGR.managers_only && user.u_is_manager || !eventGR.managers_only) ? true : false;
+		};
+
+		var departmentCheck = function () {
+			if (eventGR.departments.nil()) {
+				return true;
+			}
+			else {
+				var departments = eventGR.departments.split(',');
+				if (departments.indexOf(user.getValue('department')) > -1) {
+					return true;
+				}
+				else {
+					return false;
+				}
+			}
+		};
+
+		var peerCheck = function () {
+			if (!eventGR.restrict_peer_relationships) {
+				return true;
+			}
+			else {
+				var registered_users = eventGR.getValue('registered_users').split(',') || '';
+				for (var i = 0; i < registered_users.length; i++) {
+					var registeredUser = registered_users[i];
+					var gr = new GlideRecord('sys_user');
+					gr.get(registeredUser);
+				}
+			}
+		};
+
+		var statusCheck = eventGR.status == 2 ? true : false;
+
+		return (managerCheck() && departmentCheck() && peerCheck() && statusCheck) ? true : false;
+	},
+
+	register: function (eventGR, userID) {
+		var canRegister = this.canRegister(eventGR, userID);
+		if (canRegister) {
+			var gr = new GlideRecord('x_wegu_er_registration');
+			gr.addQuery('user', userID);
+			gr.addQuery('event_instance', eventGR.getUniqueValue());
+			gr.query();
+
+			if (gr.next()) {
+				gr.setValue('registration_status', 'Pending Approval');
+				gr.update();
+			}
+			else {
+				gr.newRecord();
+				gr.setValue('user', userID);
+				gr.setValue('event_instance', eventGR.getValue('sys_id'));
+				gr.insert();
+			}
+		}
+	},
+
+	cancel: function (eventGR, userID) {
+		var gr = new GlideRecord('x_wegu_er_registration');
+		gr.addQuery('event_instance', eventGR.getUniqueValue());
+		gr.addQuery('user', userID);
+		gr.addQuery('registration_status', 'Registered');
+		gr.query();
+
+		if (gr.next()) {
+			gr.setValue('registration_status', 'Cancelled');
+			gr.update();
+		}
+	},
+
+	type: 'Utility'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>dan.ostler</sys_created_by>
+        <sys_created_on>2018-12-05 14:17:58</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>cef9c87f4f822f40d347f7e18110c7f5</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Utility</sys_name>
+        <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
+        <sys_update_name>sys_script_include_cef9c87f4f822f40d347f7e18110c7f5</sys_update_name>
+        <sys_updated_by>dan.ostler</sys_updated_by>
+        <sys_updated_on>2018-12-06 18:19:53</sys_updated_on>
+    </sys_script_include>
+</record_update>

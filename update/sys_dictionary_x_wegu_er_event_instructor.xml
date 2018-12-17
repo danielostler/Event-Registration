@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record_update>
+<?xml version="1.0" encoding="UTF-8"?><record_update>
     <sys_dictionary action="INSERT_OR_UPDATE" element="instructor" table="x_wegu_er_event">
         <active>true</active>
         <array>false</array>
@@ -24,8 +23,9 @@
         <dependent/>
         <dependent_on_field/>
         <display>false</display>
-        <dynamic_creation>false</dynamic_creation>
-        <dynamic_creation_script/>
+        <dynamic_creation>true</dynamic_creation>
+        <dynamic_creation_script>current.name = value;&#13;
+current.insert();</dynamic_creation_script>
         <dynamic_default_value/>
         <dynamic_ref_qual/>
         <element>instructor</element>
@@ -34,7 +34,7 @@
         <function_definition/>
         <function_field>false</function_field>
         <internal_type display_value="Reference">reference</internal_type>
-        <mandatory>false</mandatory>
+        <mandatory>true</mandatory>
         <max_length>32</max_length>
         <name>x_wegu_er_event</name>
         <next_element/>
@@ -55,10 +55,10 @@
         <staged>false</staged>
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>dan.ostler</sys_created_by>
-        <sys_created_on>2018-10-18 16:43:22</sys_created_on>
+        <sys_created_on>2018-11-27 19:13:46</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>a5db4dac4fd9e340d347f7e18110c71b</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_id>8dedab594f0e6340218f28928110c72b</sys_id>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>Instructor</sys_name>
         <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
         <sys_policy/>
@@ -66,7 +66,7 @@
         <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
         <sys_update_name>sys_dictionary_x_wegu_er_event_instructor</sys_update_name>
         <sys_updated_by>dan.ostler</sys_updated_by>
-        <sys_updated_on>2018-10-18 16:43:22</sys_updated_on>
+        <sys_updated_on>2018-12-06 19:12:36</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <u_model_id/>
