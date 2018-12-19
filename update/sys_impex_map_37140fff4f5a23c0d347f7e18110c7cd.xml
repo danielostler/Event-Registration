@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_impex_map">
+    <sys_impex_map action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <agent/>
+        <apply_defaults>true</apply_defaults>
+        <coalesce/>
+        <condition_script/>
+        <data_option>insert_update</data_option>
+        <data_source/>
+        <description/>
+        <external_names/>
+        <name>icalendar.x_wegu_er_registration</name>
+        <order/>
+        <parent/>
+        <script/>
+        <sys_class_name>sys_impex_map</sys_class_name>
+        <sys_created_by>dan.ostler</sys_created_by>
+        <sys_created_on>2018-12-17 20:51:56</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>37140fff4f5a23c0d347f7e18110c7cd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>icalendar.x_wegu_er_registration</sys_name>
+        <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
+        <sys_update_name>sys_impex_map_37140fff4f5a23c0d347f7e18110c7cd</sys_update_name>
+        <sys_updated_by>dan.ostler</sys_updated_by>
+        <sys_updated_on>2018-12-17 20:51:56</sys_updated_on>
+        <table>x_wegu_er_registration</table>
+        <type>icalendar</type>
+    </sys_impex_map>
+</record_update>

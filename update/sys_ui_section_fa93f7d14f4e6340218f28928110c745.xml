@@ -4,13 +4,13 @@
             <element>number</element>
             <position>0</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-12-17 16:48:14</sys_created_on>
-            <sys_id>987c02774f9623c0d347f7e18110c79f</sys_id>
+            <sys_created_on>2018-12-17 18:50:43</sys_created_on>
+            <sys_id>6678a6bf4fd623c0d347f7e18110c7af</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_wegu_er_instance" sys_domain="global" view="Default view">fa93f7d14f4e6340218f28928110c745</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-12-17 16:48:14</sys_updated_on>
+            <sys_updated_on>2018-12-17 18:50:43</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -18,13 +18,13 @@
             <element>name</element>
             <position>1</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-12-17 16:48:14</sys_created_on>
-            <sys_id>1c7c02774f9623c0d347f7e18110c79f</sys_id>
+            <sys_created_on>2018-12-17 18:50:43</sys_created_on>
+            <sys_id>2e78a6bf4fd623c0d347f7e18110c7af</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_wegu_er_instance" sys_domain="global" view="Default view">fa93f7d14f4e6340218f28928110c745</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-12-17 16:48:14</sys_updated_on>
+            <sys_updated_on>2018-12-17 18:50:43</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -32,13 +32,13 @@
             <element>category</element>
             <position>2</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-12-17 16:48:14</sys_created_on>
-            <sys_id>9c7c02774f9623c0d347f7e18110c79f</sys_id>
+            <sys_created_on>2018-12-17 18:50:43</sys_created_on>
+            <sys_id>ae78a6bf4fd623c0d347f7e18110c7af</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_wegu_er_instance" sys_domain="global" view="Default view">fa93f7d14f4e6340218f28928110c745</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-12-17 16:48:14</sys_updated_on>
+            <sys_updated_on>2018-12-17 18:50:43</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -46,13 +46,13 @@
             <element>instructor</element>
             <position>3</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-12-17 16:48:14</sys_created_on>
-            <sys_id>107c02774f9623c0d347f7e18110c7a0</sys_id>
+            <sys_created_on>2018-12-17 18:50:43</sys_created_on>
+            <sys_id>2278a6bf4fd623c0d347f7e18110c7b0</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_wegu_er_instance" sys_domain="global" view="Default view">fa93f7d14f4e6340218f28928110c745</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-12-17 16:48:14</sys_updated_on>
+            <sys_updated_on>2018-12-17 18:50:43</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -60,13 +60,13 @@
             <element>location</element>
             <position>4</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-12-17 16:48:14</sys_created_on>
-            <sys_id>907c02774f9623c0d347f7e18110c7a0</sys_id>
+            <sys_created_on>2018-12-17 18:50:43</sys_created_on>
+            <sys_id>a278a6bf4fd623c0d347f7e18110c7b0</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_wegu_er_instance" sys_domain="global" view="Default view">fa93f7d14f4e6340218f28928110c745</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-12-17 16:48:14</sys_updated_on>
+            <sys_updated_on>2018-12-17 18:50:43</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -74,13 +74,13 @@
             <element>thumbnail</element>
             <position>5</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-12-17 16:48:14</sys_created_on>
-            <sys_id>147c02774f9623c0d347f7e18110c7a0</sys_id>
+            <sys_created_on>2018-12-17 18:50:43</sys_created_on>
+            <sys_id>2678a6bf4fd623c0d347f7e18110c7b0</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_wegu_er_instance" sys_domain="global" view="Default view">fa93f7d14f4e6340218f28928110c745</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-12-17 16:48:14</sys_updated_on>
+            <sys_updated_on>2018-12-17 18:50:43</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -88,13 +88,13 @@
             <element>.split</element>
             <position>6</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-12-17 16:48:14</sys_created_on>
-            <sys_id>947c02774f9623c0d347f7e18110c7a0</sys_id>
+            <sys_created_on>2018-12-17 18:50:43</sys_created_on>
+            <sys_id>a678a6bf4fd623c0d347f7e18110c7b0</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_wegu_er_instance" sys_domain="global" view="Default view">fa93f7d14f4e6340218f28928110c745</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-12-17 16:48:14</sys_updated_on>
+            <sys_updated_on>2018-12-17 18:50:43</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
@@ -102,13 +102,13 @@
             <element>template</element>
             <position>7</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-12-17 16:48:14</sys_created_on>
-            <sys_id>187c02774f9623c0d347f7e18110c7a0</sys_id>
+            <sys_created_on>2018-12-17 18:50:43</sys_created_on>
+            <sys_id>2a78a6bf4fd623c0d347f7e18110c7b0</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_wegu_er_instance" sys_domain="global" view="Default view">fa93f7d14f4e6340218f28928110c745</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-12-17 16:48:14</sys_updated_on>
+            <sys_updated_on>2018-12-17 18:50:43</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -116,13 +116,13 @@
             <element>status</element>
             <position>8</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-12-17 16:48:14</sys_created_on>
-            <sys_id>987c02774f9623c0d347f7e18110c7a0</sys_id>
+            <sys_created_on>2018-12-17 18:50:43</sys_created_on>
+            <sys_id>aa78a6bf4fd623c0d347f7e18110c7b0</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_wegu_er_instance" sys_domain="global" view="Default view">fa93f7d14f4e6340218f28928110c745</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-12-17 16:48:14</sys_updated_on>
+            <sys_updated_on>2018-12-17 18:50:43</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -130,13 +130,13 @@
             <element>owner</element>
             <position>9</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-12-17 16:48:14</sys_created_on>
-            <sys_id>1c7c02774f9623c0d347f7e18110c7a0</sys_id>
+            <sys_created_on>2018-12-17 18:50:43</sys_created_on>
+            <sys_id>2e78a6bf4fd623c0d347f7e18110c7b0</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_wegu_er_instance" sys_domain="global" view="Default view">fa93f7d14f4e6340218f28928110c745</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-12-17 16:48:14</sys_updated_on>
+            <sys_updated_on>2018-12-17 18:50:43</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -144,13 +144,13 @@
             <element>managers</element>
             <position>10</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-12-17 16:48:14</sys_created_on>
-            <sys_id>9c7c02774f9623c0d347f7e18110c7a0</sys_id>
+            <sys_created_on>2018-12-17 18:50:43</sys_created_on>
+            <sys_id>ae78a6bf4fd623c0d347f7e18110c7b0</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_wegu_er_instance" sys_domain="global" view="Default view">fa93f7d14f4e6340218f28928110c745</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-12-17 16:48:14</sys_updated_on>
+            <sys_updated_on>2018-12-17 18:50:43</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -158,13 +158,13 @@
             <element>capacity</element>
             <position>11</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-12-17 16:48:14</sys_created_on>
-            <sys_id>107c02774f9623c0d347f7e18110c7a1</sys_id>
+            <sys_created_on>2018-12-17 18:50:43</sys_created_on>
+            <sys_id>2278a6bf4fd623c0d347f7e18110c7b1</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_wegu_er_instance" sys_domain="global" view="Default view">fa93f7d14f4e6340218f28928110c745</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-12-17 16:48:14</sys_updated_on>
+            <sys_updated_on>2018-12-17 18:50:43</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -172,13 +172,13 @@
             <element>registered_user_count</element>
             <position>12</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-12-17 16:48:14</sys_created_on>
-            <sys_id>907c02774f9623c0d347f7e18110c7a1</sys_id>
+            <sys_created_on>2018-12-17 18:50:43</sys_created_on>
+            <sys_id>a278a6bf4fd623c0d347f7e18110c7b1</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_wegu_er_instance" sys_domain="global" view="Default view">fa93f7d14f4e6340218f28928110c745</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-12-17 16:48:14</sys_updated_on>
+            <sys_updated_on>2018-12-17 18:50:43</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -186,13 +186,13 @@
             <element>full</element>
             <position>13</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-12-17 16:48:14</sys_created_on>
-            <sys_id>147c02774f9623c0d347f7e18110c7a1</sys_id>
+            <sys_created_on>2018-12-17 18:50:43</sys_created_on>
+            <sys_id>2678a6bf4fd623c0d347f7e18110c7b1</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_wegu_er_instance" sys_domain="global" view="Default view">fa93f7d14f4e6340218f28928110c745</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-12-17 16:48:14</sys_updated_on>
+            <sys_updated_on>2018-12-17 18:50:43</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -200,13 +200,13 @@
             <element>.end_split</element>
             <position>14</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-12-17 16:48:14</sys_created_on>
-            <sys_id>947c02774f9623c0d347f7e18110c7a1</sys_id>
+            <sys_created_on>2018-12-17 18:50:43</sys_created_on>
+            <sys_id>a678a6bf4fd623c0d347f7e18110c7b1</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_wegu_er_instance" sys_domain="global" view="Default view">fa93f7d14f4e6340218f28928110c745</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-12-17 16:48:14</sys_updated_on>
+            <sys_updated_on>2018-12-17 18:50:43</sys_updated_on>
             <sys_user/>
             <type>.end_split</type>
         </sys_ui_element>
@@ -214,13 +214,13 @@
             <element>remote_meeting_url</element>
             <position>15</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-12-17 16:48:14</sys_created_on>
-            <sys_id>187c02774f9623c0d347f7e18110c7a1</sys_id>
+            <sys_created_on>2018-12-17 18:50:43</sys_created_on>
+            <sys_id>2a78a6bf4fd623c0d347f7e18110c7b1</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_wegu_er_instance" sys_domain="global" view="Default view">fa93f7d14f4e6340218f28928110c745</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-12-17 16:48:14</sys_updated_on>
+            <sys_updated_on>2018-12-17 18:50:43</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -228,15 +228,29 @@
             <element>description</element>
             <position>16</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-12-17 16:48:14</sys_created_on>
-            <sys_id>987c02774f9623c0d347f7e18110c7a1</sys_id>
+            <sys_created_on>2018-12-17 18:50:43</sys_created_on>
+            <sys_id>aa78a6bf4fd623c0d347f7e18110c7b1</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_wegu_er_instance" sys_domain="global" view="Default view">fa93f7d14f4e6340218f28928110c745</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-12-17 16:48:14</sys_updated_on>
+            <sys_updated_on>2018-12-17 18:50:43</sys_updated_on>
             <sys_user/>
             <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>activity.xml</element>
+            <position>17</position>
+            <sys_created_by>dan.ostler</sys_created_by>
+            <sys_created_on>2018-12-17 18:50:44</sys_created_on>
+            <sys_id>2e78a6bf4fd623c0d347f7e18110c7b1</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter display_value="Activities (filtered)">444ea5c6bf310100e628555b3f0739d6</sys_ui_formatter>
+            <sys_ui_section caption="NULL" display_value="" name="x_wegu_er_instance" sys_domain="global" view="Default view">fa93f7d14f4e6340218f28928110c745</sys_ui_section>
+            <sys_updated_by>dan.ostler</sys_updated_by>
+            <sys_updated_on>2018-12-17 18:50:44</sys_updated_on>
+            <sys_user/>
+            <type>formatter</type>
         </sys_ui_element>
         <sys_ui_section action="INSERT_OR_UPDATE">
             <caption/>
