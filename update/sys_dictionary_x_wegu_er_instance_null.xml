@@ -54,16 +54,16 @@
         <sys_created_by>dan.ostler</sys_created_by>
         <sys_created_on>2018-11-27 18:59:47</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>58ca27154f0e6340218f28928110c7ee</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_id>f45416054f6a6b00218f28928110c728</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>x_wegu_er_instance</sys_name>
         <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
-        <sys_update_name>sys_dictionary_x_wegu_er_instance_null</sys_update_name>
-        <sys_updated_by>dan.ostler</sys_updated_by>
-        <sys_updated_on>2018-12-17 18:50:43</sys_updated_on>
+        <sys_update_name>sys_dictionary_x_wegu_er_instance_NULL</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2018-12-21 14:35:22</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <u_model_id/>

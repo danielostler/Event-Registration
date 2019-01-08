@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_impex_entry">
     <sys_impex_entry action="INSERT_OR_UPDATE">
         <default_value/>
-        <field>registration_email</field>
-        <map/>
-        <mapped_field>registration_email</mapped_field>
-        <name>description</name>
+        <field>end</field>
+        <map display_value="icalendar. x_wegu_er_instance">030a6aae1bf2a3007f97337bcd4bcb86</map>
+        <mapped_field>end</mapped_field>
+        <name>dtend</name>
         <script/>
         <sys_class_name>sys_impex_entry</sys_class_name>
         <sys_created_by>dan.ostler</sys_created_by>
-        <sys_created_on>2018-12-17 21:00:20</sys_created_on>
+        <sys_created_on>2019-01-07 18:29:19</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>3c16cb3b4f9a23c0d347f7e18110c7c1</sys_id>
-        <sys_mod_count>2</sys_mod_count>
-        <sys_name>description</sys_name>
+        <sys_id>7cfc2a6adbba6300bb82f3813996198a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>dtend</sys_name>
         <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
-        <sys_update_name>sys_impex_entry_3c16cb3b4f9a23c0d347f7e18110c7c1</sys_update_name>
+        <sys_update_name>sys_impex_entry_7cfc2a6adbba6300bb82f3813996198a</sys_update_name>
         <sys_updated_by>dan.ostler</sys_updated_by>
-        <sys_updated_on>2018-12-17 21:50:44</sys_updated_on>
+        <sys_updated_on>2019-01-07 18:29:19</sys_updated_on>
         <table>x_wegu_er_instance</table>
         <type>field</type>
         <var_name/>

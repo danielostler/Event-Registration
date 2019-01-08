@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
-    <sys_ui_section caption="Restrictions" section_id="0f94fb154f4e6340218f28928110c7b9" sys_domain="global" table="x_wegu_er_instance" version="3" view="">
+    <sys_ui_section caption="Options" section_id="0f94fb154f4e6340218f28928110c7b9" sys_domain="global" table="x_wegu_er_instance" version="3" view="">
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>auto_approve_registration</element>
             <position>0</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-11-27 19:43:37</sys_created_on>
-            <sys_id>9ec4bf154f4e6340218f28928110c773</sys_id>
+            <sys_created_on>2018-12-21 14:42:33</sys_created_on>
+            <sys_id>0e065e894f6a6b00218f28928110c72f</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
-            <sys_ui_section caption="Restrictions" display_value="Restrictions" name="x_wegu_er_instance" sys_domain="global" view="Default view">0f94fb154f4e6340218f28928110c7b9</sys_ui_section>
+            <sys_ui_section caption="Options" display_value="Options" name="x_wegu_er_instance" sys_domain="global" view="Default view">0f94fb154f4e6340218f28928110c7b9</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-11-27 19:43:37</sys_updated_on>
+            <sys_updated_on>2018-12-21 14:42:33</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -18,13 +18,13 @@
             <element>public_participant_list</element>
             <position>1</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-11-27 19:43:37</sys_created_on>
-            <sys_id>12c4bf154f4e6340218f28928110c774</sys_id>
+            <sys_created_on>2018-12-21 14:42:33</sys_created_on>
+            <sys_id>c2065e894f6a6b00218f28928110c730</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
-            <sys_ui_section caption="Restrictions" display_value="Restrictions" name="x_wegu_er_instance" sys_domain="global" view="Default view">0f94fb154f4e6340218f28928110c7b9</sys_ui_section>
+            <sys_ui_section caption="Options" display_value="Options" name="x_wegu_er_instance" sys_domain="global" view="Default view">0f94fb154f4e6340218f28928110c7b9</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-11-27 19:43:37</sys_updated_on>
+            <sys_updated_on>2018-12-21 14:42:33</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -32,13 +32,13 @@
             <element>managers_only</element>
             <position>2</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-11-27 19:43:37</sys_created_on>
-            <sys_id>92c4bf154f4e6340218f28928110c774</sys_id>
+            <sys_created_on>2018-12-21 14:42:33</sys_created_on>
+            <sys_id>46065e894f6a6b00218f28928110c730</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
-            <sys_ui_section caption="Restrictions" display_value="Restrictions" name="x_wegu_er_instance" sys_domain="global" view="Default view">0f94fb154f4e6340218f28928110c7b9</sys_ui_section>
+            <sys_ui_section caption="Options" display_value="Options" name="x_wegu_er_instance" sys_domain="global" view="Default view">0f94fb154f4e6340218f28928110c7b9</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-11-27 19:43:37</sys_updated_on>
+            <sys_updated_on>2018-12-21 14:42:33</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -46,13 +46,13 @@
             <element>restrict_peer_relationships</element>
             <position>3</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-11-27 19:43:37</sys_created_on>
-            <sys_id>16c4bf154f4e6340218f28928110c774</sys_id>
+            <sys_created_on>2018-12-21 14:42:33</sys_created_on>
+            <sys_id>c6065e894f6a6b00218f28928110c730</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
-            <sys_ui_section caption="Restrictions" display_value="Restrictions" name="x_wegu_er_instance" sys_domain="global" view="Default view">0f94fb154f4e6340218f28928110c7b9</sys_ui_section>
+            <sys_ui_section caption="Options" display_value="Options" name="x_wegu_er_instance" sys_domain="global" view="Default view">0f94fb154f4e6340218f28928110c7b9</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-11-27 19:43:37</sys_updated_on>
+            <sys_updated_on>2018-12-21 14:42:33</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -60,13 +60,13 @@
             <element>.split</element>
             <position>4</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-11-27 19:43:37</sys_created_on>
-            <sys_id>96c4bf154f4e6340218f28928110c774</sys_id>
+            <sys_created_on>2018-12-21 14:42:33</sys_created_on>
+            <sys_id>4a065e894f6a6b00218f28928110c730</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
-            <sys_ui_section caption="Restrictions" display_value="Restrictions" name="x_wegu_er_instance" sys_domain="global" view="Default view">0f94fb154f4e6340218f28928110c7b9</sys_ui_section>
+            <sys_ui_section caption="Options" display_value="Options" name="x_wegu_er_instance" sys_domain="global" view="Default view">0f94fb154f4e6340218f28928110c7b9</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-11-27 19:43:37</sys_updated_on>
+            <sys_updated_on>2018-12-21 14:42:33</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
@@ -74,18 +74,18 @@
             <element>departments</element>
             <position>5</position>
             <sys_created_by>dan.ostler</sys_created_by>
-            <sys_created_on>2018-11-27 19:43:37</sys_created_on>
-            <sys_id>1ac4bf154f4e6340218f28928110c774</sys_id>
+            <sys_created_on>2018-12-21 14:42:33</sys_created_on>
+            <sys_id>ca065e894f6a6b00218f28928110c730</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
-            <sys_ui_section caption="Restrictions" display_value="Restrictions" name="x_wegu_er_instance" sys_domain="global" view="Default view">0f94fb154f4e6340218f28928110c7b9</sys_ui_section>
+            <sys_ui_section caption="Options" display_value="Options" name="x_wegu_er_instance" sys_domain="global" view="Default view">0f94fb154f4e6340218f28928110c7b9</sys_ui_section>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-11-27 19:43:37</sys_updated_on>
+            <sys_updated_on>2018-12-21 14:42:33</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_section action="INSERT_OR_UPDATE">
-            <caption>Restrictions</caption>
+            <caption>Options</caption>
             <header>false</header>
             <name>x_wegu_er_instance</name>
             <roles/>
@@ -95,8 +95,8 @@
             <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_id>0f94fb154f4e6340218f28928110c7b9</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_name>Restrictions</sys_name>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>Options</sys_name>
             <sys_overrides display_value="">global</sys_overrides>
             <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
             <sys_policy/>
@@ -104,7 +104,7 @@
             <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
             <sys_update_name>sys_ui_section_0f94fb154f4e6340218f28928110c7b9</sys_update_name>
             <sys_updated_by>dan.ostler</sys_updated_by>
-            <sys_updated_on>2018-11-27 19:42:51</sys_updated_on>
+            <sys_updated_on>2018-12-21 14:42:32</sys_updated_on>
             <sys_user/>
             <title>false</title>
             <view display_value="Default view" name="NULL">Default view</view>

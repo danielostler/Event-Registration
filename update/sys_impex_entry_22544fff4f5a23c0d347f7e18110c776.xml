@@ -2,7 +2,7 @@
     <sys_impex_entry action="INSERT_OR_UPDATE">
         <default_value/>
         <field>end</field>
-        <map display_value="icalendar.x_wegu_er_registration">37140fff4f5a23c0d347f7e18110c7cd</map>
+        <map/>
         <mapped_field>end</mapped_field>
         <name>dtend</name>
         <script/>
