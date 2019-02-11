@@ -4,16 +4,6 @@
         <client_script><![CDATA[function($http, $uibModal) {
 	var c = this;
 
-	//Pagination variables
-	c.data.currentPage = 1;
-	c.data.totalItems = c.data.record_count;
-	c.data.itemsPerPage = c.options.record_limit;
-	c.data.maxSize = 5;
-
-	function recordOffset() {
-		return c.data.currentPage * c.data.itemsPerPage - c.data.itemsPerPage;
-	}
-
 	function getRecords(query) {
 		c.data.isLoading = true;
 		c.data.records = [];
@@ -24,9 +14,7 @@
 				sysparm_fields: 'number,name,instructor,category,location,thumbnail,description,registered_user_count,capacity,full,start,end,registered_users,wait_list,public_participant_list,remote_meeting_url,sys_id',
 				sysparm_display_value: 'all',
 				sysparm_exclude_reference_link: true,
-				sysparm_query: query || c.record_query,
-				sysparm_limit: c.data.itemsPerPage,
-				sysparm_offset: recordOffset()
+				sysparm_query: query || c.options.record_query
 			}
 		}).then(function (r) {
 			var result = r.data.result;
@@ -58,22 +46,9 @@
 		});
 	}
 
-	function getRecordCount(query) {
-		$http({
-			method: 'GET',
-			url: '/api/now/stats/x_wegu_er_instance',
-			params: {
-				sysparm_query: query || c.record_query,
-				sysparm_count: true
-			}
-		}).then(function (r) {
-			c.data.totalItems = r.data.result.stats.count;
-		});
-	}
-
 	function normalizeRecord(recordObj) {
-		recordObj.start.prettified = moment(recordObj.start.display_value, 'yyyy-MM-DD hh:mm:ss').format('MM/DD/YY h:mm z');
-		recordObj.end.prettified = moment(recordObj.end.display_value, 'yyyy-MM-DD hh:mm:ss').format('MM/DD/YY h:mm z');
+		recordObj.start.prettified = moment(recordObj.start.display_value, 'yyyy-MM-DD hh:mm:ss').format('MM/DD h:mm a z');
+		recordObj.end.prettified = moment(recordObj.end.display_value, 'yyyy-MM-DD hh:mm:ss').format('MM/DD h:mm a z');
 
 		if (recordObj.public_participant_list.display_value == 'true') {
 			recordObj.participants = recordObj.registered_users.display_value.split(',');
@@ -113,10 +88,6 @@
 		return recordObj;
 	}
 
-	c.pageChange = function() {
-		getRecords();
-	}
-
 	c.registrationAction = function(record) {
 		var index = _.findIndex(c.data.records, record);
 		record.isLoading = true;
@@ -129,17 +100,14 @@
 	}
 
 	c.categorySelected = function(categoryID) {
-		c.data.currentPage = 1;
 		c.data.isLoading = true;
 		c.data.active_category = categoryID || '';
 
 		if (categoryID != null) {
-			getRecords(c.record_query + '^category=' + categoryID);
-			getRecordCount(c.record_query + '^category=' + categoryID);
+			getRecords(c.options.record_query + '^category=' + categoryID);
 		}
 		else {
 			getRecords();
-			getRecordCount();
 		}
 	}
 
@@ -160,12 +128,9 @@
 		});
 	}
 
-	//Initial page load
-	if (!c.data.record_query) {
-		c.record_query = c.options.record_query;
-		getCategories();
+	if (!c.data.records) {
 		getRecords();
-		getRecordCount();
+		getCategories();
 	}
 
 }]]></client_script>
@@ -195,62 +160,56 @@ dt::after {
         <roles/>
         <script><![CDATA[(function () {
 
-  data.userID = gs.getUserID();
+	data.userID = gs.getUserID();
 
-  if (!input) {
-    var gr = new GlideRecordSecure('x_wegu_er_instance');
-    gr.addEncodedQuery(options.record_query);
-    gr.query();
-    data.record_count = gr.getRowCount();
-  }
-  if (input) {
-    if (input.action == 'register') {
-      data.record = register(input.recordID);
-    }
-    else if (input.action == 'cancel') {
-      data.record = cancel(input.recordID);
-    }
-  }
+	if (input) {
+		if (input.action == 'register') {
+			data.record = register(input.recordID);
+		}
+		else if (input.action == 'cancel') {
+			data.record = cancel(input.recordID);
+		}
+	}
 
-  function getRecord(recordID) {
-    var gr = new GlideRecordSecure('x_wegu_er_instance');
-    gr.get(recordID);
-    var obj = {};
-    $sp.getRecordElements(obj, gr, 'number,name,instructor,category,location,thumbnail,description,registered_user_count,capacity,full,start,end,registered_users,wait_list,public_participant_list,remote_meeting_url,sys_id');
-    return obj
-  }
+	function getRecord(recordID) {
+		var gr = new GlideRecordSecure('x_wegu_er_instance');
+		gr.get(recordID);
+		var obj = {};
+		$sp.getRecordElements(obj, gr, 'number,name,instructor,category,location,thumbnail,description,registered_user_count,capacity,full,start,end,registered_users,wait_list,public_participant_list,remote_meeting_url,sys_id');
+		return obj
+	}
 
-  function register(recordID) {
-    var gr = new GlideRecord('x_wegu_er_registration');
-    gr.addQuery('event_instance', recordID);
-    gr.addQuery('user', data.userID);
-    gr.query();
+	function register(recordID) {
+		var gr = new GlideRecord('x_wegu_er_registration');
+		gr.addQuery('event_instance', recordID);
+		gr.addQuery('user', data.userID);
+		gr.query();
 
-    if (gr.next()) {
-      gr.setValue('registration_status', 'Pending Approval');
-      gr.update();
-    }
-    else {
-      gr.newRecord();
-      gr.setValue('event_instance', recordID);
-      gr.setValue('user', data.userID);
-      gr.insert();
-    }
-    return getRecord(recordID);
-  }
+		if (gr.next()) {
+			gr.setValue('registration_status', 'Pending Approval');
+			gr.update();
+		}
+		else {
+			gr.newRecord();
+			gr.setValue('event_instance', recordID);
+			gr.setValue('user', data.userID);
+			gr.insert();
+		}
+		return getRecord(recordID);
+	}
 
-  function cancel(recordID) {
-    var gr = new GlideRecord('x_wegu_er_registration');
-    gr.addQuery('event_instance', recordID);
-    gr.addQuery('user', data.userID);
-    gr.query();
+	function cancel(recordID) {
+		var gr = new GlideRecord('x_wegu_er_registration');
+		gr.addQuery('event_instance', recordID);
+		gr.addQuery('user', data.userID);
+		gr.query();
 
-    if (gr.next()) {
-      gr.setValue('registration_status', 'Cancelled');
-      gr.update();
-    }
-    return getRecord(recordID);
-  }
+		if (gr.next()) {
+			gr.setValue('registration_status', 'Cancelled');
+			gr.update();
+		}
+		return getRecord(recordID);
+	}
 
 })();]]></script>
         <servicenow>false</servicenow>
@@ -259,7 +218,7 @@ dt::after {
         <sys_created_on>2018-11-30 15:48:47</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>3bcb1a124fce6740d347f7e18110c727</sys_id>
-        <sys_mod_count>385</sys_mod_count>
+        <sys_mod_count>402</sys_mod_count>
         <sys_name>Event List</sys_name>
         <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
         <sys_policy/>
@@ -267,7 +226,7 @@ dt::after {
         <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
         <sys_update_name>sp_widget_3bcb1a124fce6740d347f7e18110c727</sys_update_name>
         <sys_updated_by>dan.ostler</sys_updated_by>
-        <sys_updated_on>2019-02-11 19:21:47</sys_updated_on>
+        <sys_updated_on>2019-02-11 20:27:57</sys_updated_on>
         <template><![CDATA[<div class="row"
      style="margin-top: 5px;padding-top:5px;"
      ng-if="c.data.isLoading == true">
@@ -298,11 +257,21 @@ dt::after {
 
   <div class="col-md-9">
     <div class="panel panel-default">
+
+      <div class="panel-heading clearfix">
+        <div class="col-md-4 col-md-offset-8">
+          <input placeholder="Filter" class="form-control" ng-model="eventFilter"/>
+        </div>
+      </div>
+
       <div class="panel-body">
         <div vertilize-container 
              class="row">
-          <div ng-repeat="record in c.data.records | orderBy: ['isRegistered','isWaitList','start.value'] track by record.sys_id.value"
-               class="col-xs-12 col-sm-6 col-md-4">
+          <div class="col-xs-12 col-sm-6 col-md-4"
+               ng-repeat="record in c.data.records |
+                          filter: eventFilter |
+                          orderBy: ['isRegistered','isWaitList','start.value'] 
+                          track by record.sys_id.value">
             <div ng-class="[
                            {'panel panel-primary': record.isRegistered == true},
                            {'panel panel-info': record.isWaitList && !record.isRegistered},
@@ -321,9 +290,9 @@ dt::after {
                      alt="{{ record.name.display_value }}"
                      class="m-r-sm m-b-sm item-image pull-right"/>
                 <dl>
-                  <dt>Start</dt>
+                  <dt>Start Date</dt>
                   <dd>{{ record.start.prettified }}</dd>
-                  <dt>End</dt> 
+                  <dt>End Date</dt> 
                   <dd>{{ record.end.prettified }}</dd>
                   <dt>Instructor</dt>
                   <dd>{{ record.instructor.display_value }}</dd>
@@ -341,39 +310,22 @@ dt::after {
                   </dd>
                 </dl>
               </div>
-              <div class="panel-footer clearfix">
-                <div popover-trigger="mouseenter"
-                     popover-placement="top"
-                     popover-popup-close-delay="250"
-                     uib-popover="{{ record.action_message }}"
-                     style="display:inline-block;"
-                     class="pull-right">
-                  <button type="button" class="btn btn-sm" 
-                          ng-class="[
-                                    {'btn-danger': record.action == 'cancel'},
-                                    {'btn-primary': record.action == 'register'}
-                                    ]" 
-                          ng-disabled="record.isLoading" 
-                          ng-click="c.registrationAction(record)">
-                    {{ record.action_title }}
-                    <span ng-show="record.isLoading">
-                      <fa class="fa-spinner fa-spin fa-fw"></fa>
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="row text-center">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-              <ul uib-pagination
-                  total-items="c.data.totalItems"
-                  items-per-page="c.data.itemsPerPage"
-                  max-size="c.data.maxSize"
-                  ng-model="c.data.currentPage"
-                  ng-change="c.pageChange()"
-                  class="pagination-md"></ul>
+              <div class="panel-footer clearfix">
+                <button type="button" class="btn btn-sm" 
+                        ng-class="[
+                                  {'btn-danger': record.action == 'cancel'},
+                                  {'btn-primary': record.action == 'register'}
+                                  ]" 
+                        ng-disabled="record.isLoading" 
+                        ng-click="c.registrationAction(record)">
+                  {{ record.action_title }}
+                  <span ng-show="record.isLoading">
+                    <fa class="fa-spinner fa-spin fa-fw"></fa>
+                  </span>
+                </button>
+              </div>
+
             </div>
           </div>
         </div>
