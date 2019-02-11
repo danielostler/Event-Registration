@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[function($http,$rootScope,$uibModal) {
+        <client_script><![CDATA[function($http, $uibModal) {
 	var c = this;
 
 	//Pagination variables
@@ -10,35 +10,22 @@
 	c.data.itemsPerPage = c.options.record_limit;
 	c.data.maxSize = 5;
 
-	$rootScope.$on('categorySelected', function (event,data) {
-		c.data.isLoading = true;
-		c.data.records = [];
-		if (data != '') {
-			getRecords(c.record_query + '^category=' + data);
-			getRecordCount(c.record_query + '^category=' + data);
-		}
-		else {
-			getRecords(c.record_query);
-			getRecordCount(c.record_query);
-		}
-	});
-
-	function recordOffset () {
+	function recordOffset() {
 		return c.data.currentPage * c.data.itemsPerPage - c.data.itemsPerPage;
 	}
 
-	function getRecords (query) {
+	function getRecords(query) {
 		c.data.isLoading = true;
 		c.data.records = [];
 		$http({
 			method: 'GET',
 			url: '/api/now/table/x_wegu_er_instance',
 			params: {
-				sysparm_fields: 'number,name,instructor,category,location,thumbnail,description,registered_user_count,capacity,full,start,end,registered_users,wait_list,public_participant_list,sys_id',
+				sysparm_fields: 'number,name,instructor,category,location,thumbnail,description,registered_user_count,capacity,full,start,end,registered_users,wait_list,public_participant_list,remote_meeting_url,sys_id',
 				sysparm_display_value: 'all',
 				sysparm_exclude_reference_link: true,
 				sysparm_query: query || c.record_query,
-				sysparm_limit: c.options.record_limit,
+				sysparm_limit: c.data.itemsPerPage,
 				sysparm_offset: recordOffset()
 			}
 		}).then(function(r) {
@@ -50,8 +37,28 @@
 			c.data.isLoading = false;
 		});
 	}
-	
-	function getRecordCount (query) {
+
+	function getCategories() {
+		c.data.active_category = '';
+		c.data.categories = [];
+		$http({
+			method: 'GET',
+			url: '/api/now/table/x_wegu_er_instance',
+			params: {
+				sysparm_query: c.record_query,
+				sysparm_fields: 'category',
+				sysparm_display_value: 'all',
+				sysparm_exclude_reference_link: true
+			}
+		}).then(function (r) {
+			for (var i = 0; i < r.data.result.length; i++) {
+				c.data.categories.push(r.data.result[i].category);
+			}
+			c.data.categories = _.uniqWith(c.data.categories, _.isEqual);
+		});
+	}
+
+	function getRecordCount(query) {
 		$http({
 			method: 'GET',
 			url: '/api/now/stats/x_wegu_er_instance',
@@ -64,7 +71,7 @@
 		});
 	}
 
-	function normalizeRecord (recordObj) {
+	function normalizeRecord(recordObj) {
 		recordObj.start.prettified = moment(recordObj.start.display_value, 'yyyy-MM-DD hh:mm:ss').format('MM/DD/YY h:mm z');
 		recordObj.end.prettified = moment(recordObj.end.display_value, 'yyyy-MM-DD hh:mm:ss').format('MM/DD/YY h:mm z');
 
@@ -106,11 +113,11 @@
 		return recordObj;
 	}
 
-	c.pageChange = function () {
+	c.pageChange = function() {
 		getRecords();
 	}
 
-	c.registrationAction = function (record) {
+	c.registrationAction = function(record) {
 		var index = _.findIndex(c.data.records, record);
 		record.isLoading = true;
 		c.server.get({
@@ -121,7 +128,22 @@
 		});
 	}
 
-	c.openModal = function (record) {
+	c.categorySelected = function(categoryID) {
+		c.data.currentPage = 1;
+		c.data.isLoading = true;
+		c.data.active_category = categoryID || '';
+
+		if (categoryID != null) {
+			getRecords(c.record_query + '^category=' + categoryID);
+			getRecordCount(c.record_query + '^category=' + categoryID);
+		}
+		else {
+			getRecords();
+			getRecordCount();
+		}
+	}
+
+	c.openModal = function(record) {
 		c.modalInstance = $uibModal.open({
 			templateUrl: 'record-modal.html',
 			controllerAs: 'modalC',
@@ -139,9 +161,9 @@
 	}
 
 	//Initial page load
-	if (!c.data.records.length) {
+	if (!c.data.record_query) {
 		c.record_query = c.options.record_query;
-		$rootScope.$emit('getFilter', c.record_query);
+		getCategories();
 		getRecords();
 		getRecordCount();
 	}
@@ -168,7 +190,7 @@ dt::after {
         <internal>false</internal>
         <link/>
         <name>Event List</name>
-        <option_schema>[{"name":"record_limit","section":"Data","default_value":"12","label":"Record Limit","type":"integer"},{"name":"record_query","section":"other","label":"Record Query","type":"string"}]</option_schema>
+        <option_schema>[{"name":"record_limit","section":"Data","default_value":"12","label":"Record Limit","type":"integer"},{"name":"record_query","section":"Data","label":"Record Query","type":"string"}]</option_schema>
         <public>false</public>
         <roles/>
         <script><![CDATA[(function() {
@@ -176,8 +198,6 @@ dt::after {
 	data.userID = gs.getUserID();
 
 	if (!input) {
-		data.records = [];
-
 		var gr = new GlideRecordSecure('x_wegu_er_instance');
 		gr.addEncodedQuery(options.record_query);
 		gr.query();
@@ -193,13 +213,12 @@ dt::after {
 	}
 
 	function getRecord (recordID) {
-		var gr = new GlideRecord('x_wegu_er_instance');
+		var gr = new GlideRecordSecure('x_wegu_er_instance');
 		gr.get(recordID);
 		var obj = {};
-		$sp.getRecordElements(obj, gr,'number,name,instructor,category,location,thumbnail,description,registered_user_count,capacity,full,start,end,registered_users,wait_list,public_participant_list,sys_id');
+		$sp.getRecordElements(obj, gr,'number,name,instructor,category,location,thumbnail,description,registered_user_count,capacity,full,start,end,registered_users,wait_list,public_participant_list,remote_meeting_url,sys_id');
 		return obj
 	}
-
 
 	function register (recordID) {
 		var gr = new GlideRecord('x_wegu_er_registration');
@@ -240,7 +259,7 @@ dt::after {
         <sys_created_on>2018-11-30 15:48:47</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>3bcb1a124fce6740d347f7e18110c727</sys_id>
-        <sys_mod_count>316</sys_mod_count>
+        <sys_mod_count>384</sys_mod_count>
         <sys_name>Event List</sys_name>
         <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
         <sys_policy/>
@@ -248,95 +267,115 @@ dt::after {
         <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
         <sys_update_name>sp_widget_3bcb1a124fce6740d347f7e18110c727</sys_update_name>
         <sys_updated_by>dan.ostler</sys_updated_by>
-        <sys_updated_on>2018-12-06 19:49:00</sys_updated_on>
-        <template><![CDATA[<div class="panel panel-default">
-  <div class="panel-body">
+        <sys_updated_on>2019-02-11 19:15:47</sys_updated_on>
+        <template><![CDATA[<div class="row"
+     style="margin-top: 5px;padding-top:5px;"
+     ng-if="c.data.isLoading == true">
+  <p class="text-center">
+    <fa class="fa-spinner fa-spin fa-2x fa-fw"></fa>
+    Loading..
+  </p>
+</div>
 
-    <div class="row"
-         style="margin-top: 5px;padding-top:5px;"
-         ng-if="c.data.isLoading == true">
-      <p class="text-center">
-        <fa class="fa-spinner fa-spin fa-2x fa-fw"></fa>
-        Loading..
-      </p>
-    </div>
-
-    <div vertilize-container 
-         class="row"
-         ng-if="c.data.isLoading == false">
-      <div ng-repeat="record in c.data.records | orderBy: ['isRegistered','isWaitList','start.value'] track by record.sys_id.value"
-           class="col-xs-12 col-sm-6 col-md-4">
-        <div ng-class="[
-                       {'panel panel-primary': record.isRegistered == true},
-                       {'panel panel-info': record.isWaitList && !record.isRegistered},
-                       {'panel panel-default':!record.isWaitList && !record.isRegistered}
-                       ]">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-              {{ record.name.display_value }}
-            </h3>
-          </div>
-          <div vertilize
-               class="panel-body text-muted"
-               ng-click="c.openModal(record)">
-            <img ng-src="{{ record.thumbnail.display_value}}?t=small"
-                 ng-if="record.thumbnail.display_value != ''"
-                 alt="{{ record.name.display_value }}"
-                 class="m-r-sm m-b-sm item-image pull-right"/>
-            <dl>
-              <dt>Start</dt>
-              <dd>{{ record.start.prettified }}</dd>
-              <dt>End</dt> 
-              <dd>{{ record.end.prettified }}</dd>
-              <dt>Instructor</dt>
-              <dd>{{ record.instructor.display_value }}</dd>
-              <dt>Location</dt>
-              <dd>{{ record.location.display_value }}</dd>
-              <dt>
-                <span class="glyphicon glyphicon-user user-icon"></span>
-              </dt>
-              <dd>
-                {{ record.registered_user_count.display_value }}
-                <span ng-if="record.capacity.display_value != ''">
-                  /
-                  {{ record.capacity.display_value }}
-                </span>
-              </dd>
-            </dl>
-          </div>
-          <div class="panel-footer clearfix">
-            <div popover-trigger="mouseenter"
-                 popover-placement="top"
-                 popover-popup-close-delay="250"
-                 uib-popover="{{ record.action_message }}"
-                 style="display:inline-block;"
-                 class="pull-right">
-              <button type="button" class="btn btn-sm" 
-                      ng-class="[
-                                {'btn-danger': record.action == 'cancel'},
-                                {'btn-primary': record.action == 'register'}
-                                ]" 
-                      ng-disabled="record.isLoading" 
-                      ng-click="c.registrationAction(record)">
-                {{ record.action_title }}
-                <span ng-show="record.isLoading">
-                  <fa class="fa-spinner fa-spin fa-fw"></fa>
-                </span>
-              </button>
-            </div>
-          </div>
+<div class="row"
+     ng-if="!c.data.isLoading">
+  <div class="col-md-3">
+    <div class="list-group">
+      <div class="list-group-item"
+           ng-class="{'active': c.data.active_category == ''}"
+           ng-click="c.categorySelected()">
+        Show All
+      </div>
+      <div ng-repeat="category in c.data.categories | orderBy:'display_value' track by category.value">
+        <div class="list-group-item"
+             ng-class="{'active': c.data.active_category == category.value}"
+             ng-click="c.categorySelected(category.value)">
+          {{ category.display_value }}
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="row text-center">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <ul uib-pagination
-              total-items="c.data.totalItems"
-              items-per-page="c.data.itemsPerPage"
-              max-size="c.data.maxSize"
-              ng-model="c.data.currentPage"
-              ng-change="c.pageChange()"
-              class="pagination-md"></ul>
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div vertilize-container 
+             class="row">
+          <div ng-repeat="record in c.data.records | orderBy: ['isRegistered','isWaitList','start.value'] track by record.sys_id.value"
+               class="col-xs-12 col-sm-6 col-md-4">
+            <div ng-class="[
+                           {'panel panel-primary': record.isRegistered == true},
+                           {'panel panel-info': record.isWaitList && !record.isRegistered},
+                           {'panel panel-default':!record.isWaitList && !record.isRegistered}
+                           ]">
+              <div class="panel-heading">
+                <h3 class="panel-title">
+                  {{ record.name.display_value }}
+                </h3>
+              </div>
+              <div vertilize
+                   class="panel-body text-muted"
+                   ng-click="c.openModal(record)">
+                <img ng-src="{{ record.thumbnail.display_value}}?t=small"
+                     ng-if="record.thumbnail.display_value != ''"
+                     alt="{{ record.name.display_value }}"
+                     class="m-r-sm m-b-sm item-image pull-right"/>
+                <dl>
+                  <dt>Start</dt>
+                  <dd>{{ record.start.prettified }}</dd>
+                  <dt>End</dt> 
+                  <dd>{{ record.end.prettified }}</dd>
+                  <dt>Instructor</dt>
+                  <dd>{{ record.instructor.display_value }}</dd>
+                  <dt>Location</dt>
+                  <dd>{{ record.location.display_value }}</dd>
+                  <dt>
+                    <span class="glyphicon glyphicon-user user-icon"></span>
+                  </dt>
+                  <dd>
+                    {{ record.registered_user_count.display_value }}
+                    <span ng-if="record.capacity.display_value != ''">
+                      /
+                      {{ record.capacity.display_value }}
+                    </span>
+                  </dd>
+                </dl>
+              </div>
+              <div class="panel-footer clearfix">
+                <div popover-trigger="mouseenter"
+                     popover-placement="top"
+                     popover-popup-close-delay="250"
+                     uib-popover="{{ record.action_message }}"
+                     style="display:inline-block;"
+                     class="pull-right">
+                  <button type="button" class="btn btn-sm" 
+                          ng-class="[
+                                    {'btn-danger': record.action == 'cancel'},
+                                    {'btn-primary': record.action == 'register'}
+                                    ]" 
+                          ng-disabled="record.isLoading" 
+                          ng-click="c.registrationAction(record)">
+                    {{ record.action_title }}
+                    <span ng-show="record.isLoading">
+                      <fa class="fa-spinner fa-spin fa-fw"></fa>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row text-center">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <ul uib-pagination
+                  total-items="c.data.totalItems"
+                  items-per-page="c.data.itemsPerPage"
+                  max-size="c.data.maxSize"
+                  ng-model="c.data.currentPage"
+                  ng-change="c.pageChange()"
+                  class="pagination-md"></ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

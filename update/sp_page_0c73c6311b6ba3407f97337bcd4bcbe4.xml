@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page">
+    <sp_page action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <css/>
+        <draft>false</draft>
+        <dynamic_title_structure/>
+        <id>events</id>
+        <internal>false</internal>
+        <public>false</public>
+        <roles/>
+        <short_description/>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>dan.ostler</sys_created_by>
+        <sys_created_on>2019-02-11 14:19:32</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>0c73c6311b6ba3407f97337bcd4bcbe4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>events</sys_name>
+        <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
+        <sys_update_name>sp_page_0c73c6311b6ba3407f97337bcd4bcbe4</sys_update_name>
+        <sys_updated_by>dan.ostler</sys_updated_by>
+        <sys_updated_on>2019-02-11 14:19:32</sys_updated_on>
+        <title>Events</title>
+    </sp_page>
+</record_update>

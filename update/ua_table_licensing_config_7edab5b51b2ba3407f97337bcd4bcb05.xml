@@ -13,14 +13,14 @@
         <sys_created_by>dan.ostler</sys_created_by>
         <sys_created_on>2018-11-27 18:59:48</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>705416054f6a6b00218f28928110c74b</sys_id>
+        <sys_id>7edab5b51b2ba3407f97337bcd4bcb05</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_wegu_er_instance</sys_name>
         <sys_package display_value="Event Registration" source="x_wegu_er">e5e80da84fd9e340d347f7e18110c713</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Event Registration">e5e80da84fd9e340d347f7e18110c713</sys_scope>
-        <sys_update_name>ua_table_licensing_config_705416054f6a6b00218f28928110c74b</sys_update_name>
+        <sys_update_name>ua_table_licensing_config_7edab5b51b2ba3407f97337bcd4bcb05</sys_update_name>
         <sys_updated_by>dan.ostler</sys_updated_by>
         <sys_updated_on>2018-11-27 18:59:48</sys_updated_on>
     </ua_table_licensing_config>
